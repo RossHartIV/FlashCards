@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { readDeck, deleteDeck, listCards, deleteCard } from "./../../utils/api/index.js";
+import { readDeck, deleteDeck, deleteCard } from "./../../utils/api/index.js";
 import {
     Link,
     useParams,
@@ -15,9 +15,9 @@ export default function Deck() {
                 setDeck(result);
                 return result;
             })
-    }, []);
+    }, [deckId]);
     if (!deck) return null;
-    const cards = deck.cards || null;
+    let cards = deck.cards || null;
     if (!cards) return null;
 
     const handleDelete = (event) => {
@@ -27,17 +27,14 @@ export default function Deck() {
     };
     const handleDeleteCard = (event) => {
         if (window.confirm('Delete this card?\n\n You will not be able to recover it.')) {
-            cards = cards.filter(({ id }) => id != event.target.id);
+            cards = cards.filter(({ id }) => id !== event.target.id);
             deleteCard(event.target.id);
         }
     }
 
-    let res = [];
-    for (let card in cards) {
-        res.push(cards[card]);
-    };
-    res = res.map((card) => (
-        <div>
+    function Cards() {
+        return cards.map((card) => (
+        <div key={card.id}>
             <div>
                 {card.front}
             </div>
@@ -51,12 +48,12 @@ export default function Deck() {
                 </div>
             </div>
         </div>
-    ))
+    ))}
 
     return (
         <>
         <div>
-            <ul class='breadcrumb'>
+            <ul className='breadcrumb'>
                 <li>
                     <Link to='/'>
                         Home
@@ -81,7 +78,7 @@ export default function Deck() {
         <button onClick={handleDelete}>Delete</button>
         <div>
             <h1>Cards</h1>
-            <div>{res}</div>
+            <Cards/>
         </div>
         </>
     )

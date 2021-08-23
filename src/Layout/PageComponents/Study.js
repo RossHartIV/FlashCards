@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { readDeck, listCards } from "./../../utils/api/index.js"
+import { readDeck } from "./../../utils/api/index.js"
 import {
     Link,
     useHistory,
@@ -20,7 +20,7 @@ export default function Study() {
             setDeck(res);
         }
         findDeck();
-    }, [])
+    }, [deckId])
     if (!deck) return null;
     const cards = deck.cards || null;
     if (!cards) return null;
@@ -75,7 +75,7 @@ export default function Study() {
     }
     return (
         <div>
-            <ul class='breadcrumb'>
+            <ul className='breadcrumb'>
                 <li>
                     <Link to='/'>
                         Home

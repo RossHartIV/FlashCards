@@ -19,11 +19,11 @@ import {
     useEffect(() => {
         readDeck(deckId)
             .then(setDeck);
-    }, [])
+    }, [deckId])
     useEffect(() => {
         readCard(cardId)
             .then(setCard);
-    }, [])
+    }, [cardId])
     useEffect(() => {
         setFormData({
             front: card['front'],
@@ -32,19 +32,21 @@ import {
     }, [card])
 
     const handleChange = ({ target }) => {
+        console.log("name:", target.name)
+        console.log("value:", target.value)
         setFormData({
           ...formData,
           [target.name]: target.value,
         });
     };
     const handleSubmit = () => {
-        updateCard({ id: cardId, front: formData.front, back: formData.back, 'deckId': deckId });
+        updateCard({ "id": cardId, "front": formData.front, "back": formData.back, "deckId": Number(deckId) });
     }
 
     return (
         <>
         <div>
-            <ul class='breadcrumb'>
+            <ul className='breadcrumb'>
                 <li>
                     <Link to='/'>
                         Home

@@ -18,7 +18,7 @@ export default function NewCard() {
     useEffect(() => {
         readDeck(deckId)
             .then(setDeck);
-    }, [])
+    }, [deckId])
 
     const handleChange = ({ target }) => {
         setFormData({
@@ -33,7 +33,7 @@ export default function NewCard() {
     return (
         <>
         <div>
-            <ul class='breadcrumb'>
+            <ul className='breadcrumb'>
                 <li>
                     <Link to='/'>
                         Home

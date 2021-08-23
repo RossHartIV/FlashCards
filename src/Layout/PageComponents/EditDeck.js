@@ -9,37 +9,36 @@ import {
   export default function Edit() {
     const { deckId } = useParams();
     const [deck, setDeck] = useState([]);
-    const initialFormState = {
-        name: '',
-        description: '',
-    };
-    const [formData, setFormData] = useState({ ...initialFormState});
+    const [deckName, setDeckName] = useState("")
+    const [deckDescription, setDeckDescription] = useState("")
 
     useEffect(() => {
-        readDeck(deckId)
-            .then(setDeck);
-    }, [])
-    useEffect(() => {
-        setFormData({
-            name: deck['name'],
-            description: deck['description'],
-        });
-    }, [deck])
+        async function getDeck() {
+            const res = await readDeck(deckId)
+            setDeck(res)
+            setDeckName(res.name)
+            setDeckDescription(res.description)
+        }
+        getDeck()
+    }, [deckId])
 
-    const handleChange = ({ target }) => {
-        setFormData({
-          ...formData,
-          [target.name]: target.value,
-        });
+    const handleNameChange = ({ target }) => {
+        setDeckName(target.value)
     };
-    const handleSubmit = () => {
-        updateDeck({ id: deckId, name: formData.name, description: formData.description });
+
+    const handleDescriptionChange = ({ target }) => {
+        setDeckDescription(target.value)
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        updateDeck({ id: deckId, name: deckName, description: deckDescription });
     }
 
     return (
         <>
         <div>
-            <ul class='breadcrumb'>
+            <ul className='breadcrumb'>
                 <li>
                     <Link to='/'>
                         Home
@@ -57,12 +56,12 @@ import {
         <form onSubmit={handleSubmit}>
             <label htmlFor="name">
                 <p>Name</p>
-                <input id="name" type="text" name="name" onChange={handleChange} value={formData.name}/>
+                <input id="name" type="text" name="name" onChange={handleNameChange} value={deckName}/>
             </label>
             <br />
             <label htmlFor="description">
                 <p>Description</p>
-                <input id="description" type="text" name="description" onChange={handleChange} value={formData.description}/>
+                <input id="description" type="text" name="description" onChange={handleDescriptionChange} value={deckDescription}/>
             </label>
             <br />
             <Link to='./'>
