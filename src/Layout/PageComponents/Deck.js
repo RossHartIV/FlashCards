@@ -49,11 +49,14 @@ export default function Deck() {
         return cards.map((card) => (
         <div key={card.id} className="card">
             <div className="cardHeader-Container" >
+                
                 <div className="deckHeader-Child">
-                    Front: {card.front}
+                    <p>Front:</p>
+                    <p>{card.front}</p>
                 </div>
                 <div className="cardHeader-Child">
-                    Back: {card.back}
+                    <p>Back:</p>
+                    <p>{card.back}</p>
                 </div>
             </div>
             <div className="cardLinks-Container">
@@ -86,10 +89,10 @@ export default function Deck() {
                 <button className="btn btn-secondary">Edit</button>
             </Link>
             <Link to='./study' className="deckViewLinks-Child">
-                <button className="btn btn-secondary">Study</button>
+                <button className="btn btn-primary">Study</button>
             </Link>
             <Link to='./cards/new' className="deckViewLinks-Child">
-                <button className="btn btn-secondary">Add Cards</button>
+                <button className="btn btn-primary">Add Cards</button>
             </Link>
             <button onClick={handleDeleteDeck} className="deckViewLinks-Child btn btn-danger">Delete</button>
         </div>

@@ -61,7 +61,7 @@ export default function FormComponent({ deck, cardId }) {
             <Link to={sendBack()}>
                 <button className="btn btn-secondary">Done</button>
             </Link>
-            <button type="submit" className="btn btn-secondary">Submit</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
         </form>
     )
 }

@@ -5,6 +5,7 @@ import {
     useParams,
   } from "react-router-dom";
   import "./../App.css";
+import FormComponent from "./FormComponent.js";
 
   export default function Edit() {
     const { deckId } = useParams();
@@ -61,14 +62,16 @@ import {
             <br />
             <label htmlFor="description">
                 <p>Description</p>
-                <input id="description" type="text" name="description" onChange={handleDescriptionChange} value={deckDescription}/>
+                <textarea rows='3'  id="description" type="text" name="description" onChange={handleDescriptionChange} value={deckDescription}/>
             </label>
             <br />
             <Link to='./'>
-                <button className="btn btn-danger">Cancel</button>
+                <button className="btn btn-secondary">Cancel</button>
             </Link>
-            <button type="submit" className="btn btn-secondary">Submit</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
         </form>
+        <h1>Add a Card</h1>
+        <FormComponent deck={deck} cardId={false}/>
         </>
     )
   }

@@ -42,7 +42,7 @@ export default function Home() {
                         <button className="btn btn-secondary">Edit</button>
                     </Link>
                     <Link to={`./decks/${deck['id']}/study`} className="homeLinks-Child">
-                        <button className="btn btn-secondary">Study</button>
+                        <button className="btn btn-primary">Study</button>
                     </Link>
                     <button onClick={handleDelete} id={deck['id']} className="btn btn-danger homeLinks-Child">Delete</button>
                     

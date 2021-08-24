@@ -57,9 +57,9 @@ export default function NewDeck() {
             </label>
             <br />
             <Link to='/'>
-                <button className="btn btn-danger">Cancel</button>
+                <button className="btn btn-secondary">Cancel</button>
             </Link>
-            <button onClick={handleSubmit} className="btn btn-secondary">Submit</button>
+            <button onClick={handleSubmit} className="btn btn-primary">Submit</button>
         </form>
         </>
     )
