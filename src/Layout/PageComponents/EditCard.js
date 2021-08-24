@@ -5,7 +5,7 @@ import {
     useParams,
   } from "react-router-dom";
   import "./../App.css";
-  import Form from "./Form"
+  import FormComponent from "./FormComponent"
 
   export default function EditCard() {
     const { deckId, cardId } = useParams();
@@ -35,7 +35,7 @@ import {
             </ul>
         </div>
         <h1>Edit Card</h1>
-        <Form deck={deck} cardId={cardId}/>
+        <FormComponent deck={deck} cardId={cardId}/>
         </>
     )
   }

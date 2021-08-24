@@ -5,7 +5,7 @@ import {
     useParams,
   } from "react-router-dom";
   import "./../App.css";
-  import Form from "./Form"
+  import FormComponent from "./FormComponent"
 
 export default function NewCard() {
     const { deckId } = useParams();
@@ -34,7 +34,7 @@ export default function NewCard() {
             </ul>
         </div>
         <h3>{deck['name']}: Add Card</h3>
-        <Form deck={deck} cardId={false}/>
+        <FormComponent deck={deck} cardId={false}/>
         </>
     )
 }

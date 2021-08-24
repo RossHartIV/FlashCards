@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from "react"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { createCard, updateCard, readCard } from "../../utils/api";
 
-export default function Form({ deck, cardId }) {
+export default function FormComponent({ deck, cardId }) {
     const initialFormState = {
         front: '',
         back: '',
@@ -38,6 +38,13 @@ export default function Form({ deck, cardId }) {
         }
     }
 
+    const sendBack = () => {
+        if (cardId) {
+            return './../..'
+        }
+        return './..'
+    }
+
     return (
         <form onSubmit={handleSubmit}>
             <label htmlFor="name">
@@ -51,7 +58,7 @@ export default function Form({ deck, cardId }) {
                 <textarea rows='3' id="back" type="text" name="back" onChange={handleChange} value={formData.back}/>
             </label>
             <br />
-            <Link to={`./../..`}>
+            <Link to={sendBack()}>
                 <button>Done</button>
             </Link>
             <button type="submit">Submit</button>

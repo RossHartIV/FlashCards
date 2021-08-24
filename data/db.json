@@ -4,11 +4,6 @@
       "name": "Test Deck",
       "description": "Deck for testing",
       "id": 1
-    },
-    {
-      "name": "Other Test",
-      "description": "Deck for other Testing",
-      "id": 2
     }
   ],
   "cards": [
@@ -29,18 +24,6 @@
       "back": "and",
       "deckId": 1,
       "id": 3
-    },
-    {
-      "front": "1",
-      "back": "and",
-      "deckId": 2,
-      "id": 4
-    },
-    {
-      "front": "2",
-      "back": "and",
-      "deckId": 2,
-      "id": 5
     }
   ]
 }
