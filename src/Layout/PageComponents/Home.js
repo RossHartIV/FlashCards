@@ -3,6 +3,7 @@ import { listDecks, deleteDeck } from "./../../utils/api/index.js";
 import {
     Link,
   } from "react-router-dom";
+  import "./../App.css"
 
 
 export default function Home() {
@@ -27,21 +28,23 @@ export default function Home() {
 
     function showDecks(deck) {
             return (
-                <div key={deck.id}>
-                <div>
-                    {deck['name']}
+            <div key={deck.id} className="deck">
+                <div className="deckHeader-Container">
+                    <div className="deckHeader-Child">
+                        {deck['name']}
+                    </div>
+                    <div className="deckHeader-Child">
+                        {deck.cards.length} cards
+                    </div>
                 </div>
-                <div>
-                    {deck.cards.length} cards
-                </div>
-                <div>
-                     <Link to={`./decks/${deck['id']}/edit`}>
-                        <button>Edit</button>
+                <div className="homeLinks">
+                     <Link to={`./decks/${deck['id']}/edit`} className="homeLinks-Child">
+                        <button className="btn btn-secondary">Edit</button>
                     </Link>
-                    <Link to={`./decks/${deck['id']}/study`}>
-                        <button>Study</button>
+                    <Link to={`./decks/${deck['id']}/study`} className="homeLinks-Child">
+                        <button className="btn btn-secondary">Study</button>
                     </Link>
-                    <button onClick={handleDelete} id={deck['id']}>Delete</button>
+                    <button onClick={handleDelete} id={deck['id']} className="btn btn-danger homeLinks-Child">Delete</button>
                     
                 </div>
             </div>
@@ -51,7 +54,7 @@ export default function Home() {
     return (
         <div>
             <Link to='/decks/new'>
-                <button>Create Deck</button>
+                <button className="btn btn-secondary">Create Deck</button>
             </Link>
             {decks.map((deck) => showDecks(deck))}
         </div>

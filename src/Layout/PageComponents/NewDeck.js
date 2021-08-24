@@ -1,12 +1,14 @@
 import React, { useState, } from "react";
 import {
     Link,
+    useHistory
   } from "react-router-dom";
   import "./../App.css"
-import { createDeck } from "./../../utils/api/index.js"
+import { createDeck, listDecks } from "./../../utils/api/index.js"
 
 export default function NewDeck() {
     const [formData, setFormData] = useState({});
+    const history = useHistory();
     const handleChange = ({ target }) => {
         setFormData({
           ...formData,
@@ -14,7 +16,15 @@ export default function NewDeck() {
         });
     };
     const handleSubmit = () => {
+        async function makeDeck() {
+            const res = await listDecks()
+            const deckId = res.length+1
+            history.push(`/decks/${deckId}/`)
+            history.goForward();
+            history.go(0);
+        }
         createDeck({ ...formData })
+        makeDeck()
     }
 
 
@@ -33,7 +43,7 @@ export default function NewDeck() {
             </ul>
         </div>
         <h1>Create Deck</h1>
-        <form onSubmit={handleSubmit}>
+        <form>
             <label htmlFor="name">
                 <p>Name</p>
                 <input rows='3' id="name" type="text" name="name" onChange={handleChange} placeholder="Deck name here" defaultValue={formData.name}/>
@@ -47,9 +57,9 @@ export default function NewDeck() {
             </label>
             <br />
             <Link to='/'>
-                <button>Cancel</button>
+                <button className="btn btn-danger">Cancel</button>
             </Link>
-            <button type="submit">Submit</button>
+            <button onClick={handleSubmit} className="btn btn-secondary">Submit</button>
         </form>
         </>
     )

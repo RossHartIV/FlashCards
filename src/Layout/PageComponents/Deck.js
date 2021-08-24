@@ -47,18 +47,20 @@ export default function Deck() {
 
     function Cards() {
         return cards.map((card) => (
-        <div key={card.id}>
-            <div>
-                {card.front}
-            </div>
-            <div>
-                {card.back}
-                <div>
-                    <Link to={`./cards/${card.id}/edit`}>
-                        <button type="button" className="btn btn-secondary btn-lg">Edit</button>
-                    </Link>
-                    <button type="button" className="btn btn-danger btn-lg"  id={card.id} onClick={handleDeleteCard}>Delete</button>
+        <div key={card.id} className="card">
+            <div className="cardHeader-Container" >
+                <div className="deckHeader-Child">
+                    Front: {card.front}
                 </div>
+                <div className="cardHeader-Child">
+                    Back: {card.back}
+                </div>
+            </div>
+            <div className="cardLinks-Container">
+                <Link to={`./cards/${card.id}/edit`} className="cardLinks-Child">
+                    <button type="button" className="btn btn-secondary btn-lg">Edit</button>
+                </Link>
+                <button type="button" className="btn btn-danger btn-lg cardLinks-Child"  id={card.id} onClick={handleDeleteCard} >Delete</button>
             </div>
         </div>
     ))}
@@ -79,16 +81,18 @@ export default function Deck() {
         </div>
         <h3>{deck['name']}</h3>
         <p>{deck['description']}</p>
-        <Link to='./edit'>
-            <button>Edit</button>
-        </Link>
-        <Link to='./study'>
-            <button>Study</button>
-        </Link>
-        <Link to='./cards/new'>
-            <button>Add Cards</button>
-        </Link>
-        <button onClick={handleDeleteDeck}>Delete</button>
+        <div className="deckViewLinks-Container">
+            <Link to='./edit' className="deckViewLinks-Child">
+                <button className="btn btn-secondary">Edit</button>
+            </Link>
+            <Link to='./study' className="deckViewLinks-Child">
+                <button className="btn btn-secondary">Study</button>
+            </Link>
+            <Link to='./cards/new' className="deckViewLinks-Child">
+                <button className="btn btn-secondary">Add Cards</button>
+            </Link>
+            <button onClick={handleDeleteDeck} className="deckViewLinks-Child btn btn-danger">Delete</button>
+        </div>
         <div>
             <h1>Cards</h1>
             <Cards/>

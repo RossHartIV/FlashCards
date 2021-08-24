@@ -53,7 +53,7 @@ export default function Study() {
                           <h2>Not enough cards</h2>
                           <p>You need at least 3 cards to study. There are {cards.length} cards in this deck.</p>
                           <Link to='./cards/new'>
-                              <button >Add Cards</button>
+                              <button className="btn btn-secondary btn-lg">Add Cards</button>
                           </Link>
                       </>
                   ) : side ? (

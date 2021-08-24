@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-import { Link, useHistory } from "react-router-dom"
+import { Link  } from "react-router-dom"
 import { createCard, updateCard, readCard } from "../../utils/api";
 
 export default function FormComponent({ deck, cardId }) {
@@ -59,9 +59,9 @@ export default function FormComponent({ deck, cardId }) {
             </label>
             <br />
             <Link to={sendBack()}>
-                <button>Done</button>
+                <button className="btn btn-secondary">Done</button>
             </Link>
-            <button type="submit">Submit</button>
+            <button type="submit" className="btn btn-secondary">Submit</button>
         </form>
     )
 }

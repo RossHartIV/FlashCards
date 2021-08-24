@@ -1,4 +1,89 @@
 /* Style the list */
+div {
+  margin: 10px;
+}
+
+div.deck {
+  border-style: solid;
+  width: 600px;
+  border-width: 2px;
+}
+
+div.card {
+  border-style: solid;
+  width: 600px;
+  border-width: 2px;
+}
+
+
+.deckHeader-Container {
+  display: flex;
+}
+
+.deckHeader-Child {
+  flex: 1;
+}
+
+.deckHeader-Child:first-child {
+  padding-right: 75px;
+}
+
+.deckHeader-Child:last-child {
+  text-align: right;
+}
+
+.cardHeader-Container {
+  display: flex;
+}
+
+.cardHeader-Child {
+  flex: 1;
+}
+
+.cardHeader-Child:first-child {
+  padding-right: 90px;
+}
+
+.homeLinks {
+  display: flex;
+}
+
+.homeLinks-Child {
+  flex: 1;
+  margin: 5px;
+}
+
+.homeLinks-Child:last-child {
+  margin-left: 300px;
+}
+
+.deckViewLinks-Container {
+  display: flex;
+  width: 300px;
+}
+
+.deckViewLinks-Child {
+  flex: 1;
+  margin: 5px;
+}
+
+.deckViewLinks-Child:last-child {
+  margin-left: 75px;
+}
+
+
+.cardLinks-Child:last-child {
+  margin-left: 375px;
+}
+
+.cardLinks-Container {
+  display: flex;
+}
+
+.cardLinks-Child {
+  flex: 1;
+}
+
 ul.breadcrumb {
     padding: 10px 16px;
     list-style: none;

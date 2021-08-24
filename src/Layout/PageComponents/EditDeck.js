@@ -65,9 +65,9 @@ import {
             </label>
             <br />
             <Link to='./'>
-                <button>Cancel</button>
+                <button className="btn btn-danger">Cancel</button>
             </Link>
-            <button type="submit">Submit</button>
+            <button type="submit" className="btn btn-secondary">Submit</button>
         </form>
         </>
     )
