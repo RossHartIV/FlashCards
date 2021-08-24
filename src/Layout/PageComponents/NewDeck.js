@@ -21,7 +21,7 @@ export default function NewDeck() {
     return (
         <>
         <div>
-            <ul class='breadcrumb'>
+            <ul className='breadcrumb'>
                 <li>
                     <Link to='/'>
                         Home

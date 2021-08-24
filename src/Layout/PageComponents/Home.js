@@ -18,7 +18,9 @@ export default function Home() {
     
     const handleDelete = (event) => {
         if (window.confirm('Delete this deck?\n\n You will not be able to recover it.')) {
-            setDecks(decks.filter(({ id }) => id !== event.target.id));
+            
+            console.log("Event Id:", event.target.id)
+            setDecks(decks.filter(({ id }) => Number(id) !== Number(event.target.id)));
             deleteDeck(event.target.id);
         }
     } 

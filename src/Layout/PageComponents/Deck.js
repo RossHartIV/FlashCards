@@ -9,15 +9,16 @@ import "./../App.css";
 export default function Deck() {
     const { deckId } = useParams();
     const [deck, setDeck] = useState([]);
+    const [cards, setCards] = useState([]);
     useEffect(() => {
-        readDeck(deckId)
-            .then((result) => {
-                setDeck(result);
-                return result;
-            })
+        async function getDeck(){
+            const res = await readDeck(deckId);
+            setDeck(res)
+            setCards(res.cards)
+        }
+        getDeck();
     }, [deckId]);
     if (!deck) return null;
-    let cards = deck.cards || null;
     if (!cards) return null;
 
     const handleDelete = (event) => {
@@ -27,7 +28,7 @@ export default function Deck() {
     };
     const handleDeleteCard = (event) => {
         if (window.confirm('Delete this card?\n\n You will not be able to recover it.')) {
-            cards = cards.filter(({ id }) => id !== event.target.id);
+            setCards(cards.filter(({ id }) => Number(id) !== Number(event.target.id)));
             deleteCard(event.target.id);
         }
     }
