@@ -4,7 +4,7 @@ import {
     useHistory
   } from "react-router-dom";
   import "./../App.css"
-import { createDeck, listDecks } from "./../../utils/api/index.js"
+import { createDeck } from "./../../utils/api/index.js"
 
 export default function NewDeck() {
     const [formData, setFormData] = useState({});
@@ -16,15 +16,13 @@ export default function NewDeck() {
         });
     };
     const handleSubmit = () => {
-        async function makeDeck() {
-            const res = await listDecks()
-            const deckId = res.length+1
-            history.push(`/decks/${deckId}/`)
+
+        createDeck({ ...formData }).then((res) => {
+            history.push(`/decks/${res.id}/`);
             history.goForward();
             history.go(0);
-        }
-        createDeck({ ...formData })
-        makeDeck()
+        })
+       
     }
 
 

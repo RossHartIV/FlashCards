@@ -1,32 +1,17 @@
 {
   "decks": [
     {
-      "name": "First deck",
-      "id": 1
-    },
-    {
-      "name": "Second Deck",
-      "id": 2
+      "id": 1,
+      "name": "New Changed",
+      "description": "Deck Changed"
     }
   ],
   "cards": [
     {
-      "front": "First Card",
-      "back": "And",
+      "front": "New",
+      "back": "Card",
       "deckId": 1,
       "id": 1
-    },
-    {
-      "front": "Second Card",
-      "back": "And",
-      "deckId": 1,
-      "id": 2
-    },
-    {
-      "front": "Third Card",
-      "back": "And",
-      "deckId": 1,
-      "id": 3
     }
   ]
 }
